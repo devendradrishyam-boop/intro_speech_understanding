@@ -1,16 +1,15 @@
-'''
-This homework defines one method, called "arithmetic".
-that method, type `help homework2.arithmetic`.
-'''
-
 def arithmetic(x, y):
-    """
-    Modify this code so that it performs one of four possible functions, 
-    as specified in the following table:
+    if isinstance(x, str) and isinstance(y, str):
+        return x + y
 
-                        isinstance(x,str)  isinstance(x,float)
-    isinstance(y,str)   return x+y         return str(x)+y
-    isinstance(y,float) return x*int(y)    return x*y
-    """
-    return 0
+    elif isinstance(x, (int, float)) and isinstance(y, str):
+        return str(x) + y
 
+    elif isinstance(x, str) and isinstance(y, (int, float)):
+        return x * int(y)
+
+    elif isinstance(x, (int, float)) and isinstance(y, (int, float)):
+        return x * y
+
+    else:
+        raise TypeError("Unsupported argument types for arithmetic function")
